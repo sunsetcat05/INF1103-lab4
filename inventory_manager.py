@@ -1,3 +1,11 @@
+import json
+
+items={
+    "name": "Laptop","price ": 1000,"stock": 10,
+    "name": "Wireless Mouse","price": 50,"stock": 20,
+    "name": "Keyboard","price": 100,"stock": 15,
+}
+
 inventory = []
 transactions = []
 Failed = 0
@@ -55,8 +63,7 @@ def load_inventory():
     global inventory
     try:
         with open("inventory.json", "r") as file:
-            lines = file.readlines()
-            inventory = [line.strip() for line in lines if line.strip()]
+            inventory = json.load(file)
             print("Loaded inventory from file:")
             for item in inventory:
                 print(item)
@@ -66,13 +73,10 @@ def load_inventory():
 
 def save_inventory():
     global inventory, transactions
-    with open("inventory.txt", "w") as file:
-        for item in inventory:
-            file.write(item + "\n")
-        file.write("\nTransaction History:\n")
-        for t in transactions:
-            file.write(str(t) + "\n")
-    print("Order successfully saved to inventory.txt")
+    with open("inventory.json", "w") as file:
+        json.dump(inventory, file)
+        json.dump(transactions, file)
+    print("Order successfully saved to inventory.json")
 
 def get_valid_Input():
     global Failed
