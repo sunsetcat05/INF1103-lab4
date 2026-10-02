@@ -2,10 +2,59 @@ inventory = []
 transactions = []
 Failed = 0
 
+
+def display_all():
+    global inventory
+    print("Current Inventory:")
+    for item in inventory:
+        print(item)
+
+def add_product():
+    global inventory
+    product_name = input("Enter Product Name: ")
+    stock_quantity = get_valid_Input()
+    if stock_quantity is not None:
+        order_id = 1000 + len(inventory) + 1
+        order = f"{order_id}, {product_name}, {stock_quantity}"
+        inventory.append(order)
+        transactions.append(stock_quantity)
+        print("\nNew Order Added:")
+        print(order)
+
+def update_stock():
+    global inventory
+    product_name = input("Enter Product Name to Update: ")
+    stock_quantity = get_valid_Input()
+    if stock_quantity is not None:
+        for i, item in enumerate(inventory):
+            if product_name in item:
+                order_id = 1000 + i + 1
+                updated_order = f"{order_id}, {product_name}, {stock_quantity}"
+                inventory[i] = updated_order
+                transactions.append(stock_quantity)
+                print("\nStock Updated:")
+                print(updated_order)
+                return
+        print("Product not found in inventory.")
+
+def search_product():
+    global inventory
+    product_name = input("Enter Product Name to Search: ")
+    found = False
+    for item in inventory:
+        if product_name in item:
+            print("Product Found:")
+            print(item)
+            found = True
+            break
+    if not found:
+        print("Product not found in inventory.")
+
+
 def load_inventory():
     global inventory
     try:
-        with open("inventory.txt", "r") as file:
+        with open("inventory.json", "r") as file:
             lines = file.readlines()
             inventory = [line.strip() for line in lines if line.strip()]
             print("Loaded inventory from file:")
