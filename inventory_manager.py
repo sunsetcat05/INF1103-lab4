@@ -22,7 +22,7 @@ inventory = [
     }
 ]
 
-inventory = []
+# inventory = []
 transactions = []
 Failed = 0
 
@@ -33,10 +33,10 @@ def display_all():
 
     for item in inventory:
         print(
-            f"ID: {item['id']} | "
-            f"Name: {item['name']} | "
-            f"Price: ${item['price']:.2f} | "
-            f"Stock: {item['stock']}"
+            f"ID: {item["id"]} | "
+            f"Name: {item["name"]} | "
+            f"Price: ${item["price"]:.2f} | "
+            f"Stock: {item["stock"]}"
         )
 
     print("-" * 50)
@@ -98,17 +98,17 @@ def search_product():
 
     print("Product not found.")
 
-def load_inventory():
-    global inventory
-    try:
-        with open("inventory.json", "r") as file:
-            inventory = json.load(file)
+# def load_inventory():
+#     global inventory
+#     try:
+#         with open("inventory.json", "r") as file:
+#             inventory = json.load(file)
             
-        print("Loaded inventory from file:")
-        print("Inventory loaded successfully")
-    except FileNotFoundError:
-        inventory = []
-        print("Inventory file not found. Starting with empty inventory.")
+#         print("Loaded inventory from file:")
+#         print("Inventory loaded successfully")
+#     except FileNotFoundError:
+#         inventory = []
+#         print("Inventory file not found. Starting with empty inventory.")
         
 
 def save_inventory():
