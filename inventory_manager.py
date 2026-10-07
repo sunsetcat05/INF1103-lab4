@@ -1,4 +1,5 @@
 import json
+import os
 
 inventory = [
     {
@@ -97,17 +98,17 @@ def search_product():
 
     print("Product not found.")
 
-def load_inventory():
-    global inventory
-    try:
-        with open("inventory.json", "r") as file:
-            inventory = json.load(file)
+# def load_inventory():
+#     global inventory
+#     try:
+#         with open("inventory.json", "r") as file:
+#             inventory = json.load(file)
             
-        print("Loaded inventory from file:")
-        print("Inventory loaded successfully")
-    except FileNotFoundError:
-        inventory = []
-        print("Inventory file not found. Starting with empty inventory.")
+#         print("Loaded inventory from file:")
+#         print("Inventory loaded successfully")
+#     except FileNotFoundError:
+#         inventory = []
+#         print("Inventory file not found. Starting with empty inventory.")
         
 
 def save_inventory():
