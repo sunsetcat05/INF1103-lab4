@@ -33,10 +33,10 @@ def display_all():
 
     for item in inventory:
         print(
-            f"ID: {item["id"]} | "
-            f"Name: {item["name"]} | "
-            f"Price: ${item["price"]:.2f} | "
-            f"Stock: {item["stock"]}"
+            f"ID: {item['id']} | "
+            f"Name: {item['name']} | "
+            f"Price: ${item['price']:.2f} | "
+            f"Stock: {item['stock']}"
         )
 
     print("-" * 50)
